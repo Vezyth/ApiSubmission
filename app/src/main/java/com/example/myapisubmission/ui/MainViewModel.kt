@@ -1,52 +1,58 @@
-package com.example.myapisubmission
+package com.example.myapisubmission.ui
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import com.example.myapisubmission.retrofit.api.ApiConfig
+import com.example.myapisubmission.retrofit.response.GitResponse
+import com.example.myapisubmission.retrofit.response.ItemsItem
+import com.example.myapisubmission.ui.settings.SettingPreferences
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class MainViewModel : ViewModel() {
+class MainViewModel(private val preferences: SettingPreferences) : ViewModel() {
     private val _listUsers = MutableLiveData<List<ItemsItem>>()
     val listUsers: LiveData<List<ItemsItem>> = _listUsers
+
+
+
+
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
 
-
+    fun getTheme()=preferences.getThemeSetting().asLiveData()
 
     companion object{
         const val TAG = "MainViewModel"
+        const val username = "arif"
 
     }
 
     init{
-        setUsers()
+        searchUser(username)
     }
 
 
 
-    private fun setUsers() {
-        _isLoading.value = true
 
-        val client = ApiConfig.getApiService().getUsers("arif")
+
+    fun searchUser(query: String) {
+        _isLoading.value = true
+        val client = ApiConfig.getApiService().getUsers(query)
         client.enqueue(object : Callback<GitResponse> {
             override fun onResponse(
-
                 call: Call<GitResponse>,
                 response: Response<GitResponse>
             ) {
                 _isLoading.value = false
-                if (response.isSuccessful) {
 
+                if (response.isSuccessful) {
                     _listUsers.value = response.body()?.items
 
                 } else {
-
                     Log.e(TAG, "onFailure: ${response.message()}")
                 }
             }
@@ -56,4 +62,11 @@ class MainViewModel : ViewModel() {
             }
         })
     }
+    class Factory(private val preferences: SettingPreferences) :
+        ViewModelProvider.NewInstanceFactory() {
+
+        override fun <T : ViewModel> create(modelClass: Class<T>): T =
+            MainViewModel(preferences) as T
+    }
+
 }

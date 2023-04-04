@@ -9,10 +9,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.myapisubmission.ui.detail.DetailActivity
 
 class UserAdapter(private val listUser: ArrayList<Users>) : RecyclerView.Adapter<UserAdapter.ListViewHolder>() {
 
-    private lateinit var onItemClickCallback: OnItemClickCallback
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val view: View =
@@ -43,14 +44,7 @@ class UserAdapter(private val listUser: ArrayList<Users>) : RecyclerView.Adapter
 
     }
 
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
 
-    interface OnItemClickCallback {
-
-        fun onItemClicked(username: String)
-    }
 
 
 }

@@ -14,16 +14,22 @@
         android:theme="@style/Theme.MyApiSubmission"
         tools:targetApi="31">
         <activity
+            android:name=".ui.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".database.Favs"
             android:exported="false" />
         <activity
-            android:name=".SettingActivity"
+            android:name=".ui.settings.SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".DetailActivity"
+            android:name=".ui.detail.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.favs.FavsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

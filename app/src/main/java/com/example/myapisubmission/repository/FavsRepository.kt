@@ -22,7 +22,8 @@ class FavsRepository(application: Application) {
     fun delete(favs: Favs) {
         executorService.execute { mFavsDao.delete(favs) }
     }
-    fun update(favs: Favs) {
-        executorService.execute { mFavsDao.update(favs) }
-    }
+
+
+    fun getFavsByUser(username: String) = mFavsDao.getFavsByUser(username)
+
 }

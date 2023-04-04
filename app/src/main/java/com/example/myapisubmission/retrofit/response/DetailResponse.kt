@@ -1,26 +1,10 @@
-package com.example.myapisubmission
+package com.example.myapisubmission.retrofit.response
 
 import com.google.gson.annotations.SerializedName
 
 data class DetailResponse(
 
-	@field:SerializedName("gists_url")
-	val gistsUrl: String,
 
-	@field:SerializedName("repos_url")
-	val reposUrl: String,
-
-	@field:SerializedName("following_url")
-	val followingUrl: String,
-
-	@field:SerializedName("twitter_username")
-	val twitterUsername: Any,
-
-	@field:SerializedName("bio")
-	val bio: Any,
-
-	@field:SerializedName("created_at")
-	val createdAt: String,
 
 	@field:SerializedName("login")
 	val login: String,

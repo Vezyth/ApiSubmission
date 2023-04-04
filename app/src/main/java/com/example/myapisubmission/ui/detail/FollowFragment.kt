@@ -1,16 +1,17 @@
-package com.example.myapisubmission
+package com.example.myapisubmission.ui.detail
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapisubmission.retrofit.response.ItemsItem
+import com.example.myapisubmission.UserAdapter
+import com.example.myapisubmission.Users
 import com.example.myapisubmission.databinding.FragmentFollowBinding
-
+import com.example.myapisubmission.ui.ViewModelFactory
 
 
 class FollowFragment : Fragment() {
@@ -32,7 +33,7 @@ class FollowFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val detailViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[DetailViewModel::class.java]
+        val detailViewModel = ViewModelProvider(this, ViewModelFactory(requireActivity().application))[DetailViewModel::class.java]
         var position = 0
         var username = arguments?.getString(ARG_USERNAME)
         arguments?.let {

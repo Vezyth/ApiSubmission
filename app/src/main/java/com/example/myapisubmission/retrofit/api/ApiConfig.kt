@@ -1,4 +1,4 @@
-package com.example.myapisubmission
+package com.example.myapisubmission.retrofit.api
 
 import androidx.viewbinding.BuildConfig
 import okhttp3.OkHttpClient

@@ -1,4 +1,4 @@
-package com.example.myapisubmission
+package com.example.myapisubmission.ui.detail
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
